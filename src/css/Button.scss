@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap');
+
+$status-colors: (
+    "Primary": #2196f3,
+    "Default": #E0E0E0,
+    "Secondary": #455A64,
+    "Danger": #ff5252
+);
+$status-bghover-colors: (
+    "Primary": #b3e5fc,
+    "Default": #AEAEAE,
+    "Secondary": #263238,
+    "Danger": #d50000
+);
+
+
+// NO PROPS
+.btn {
+    color: #fff;
+    background: #2196f3;
+    box-shadow: 0px 2px 3px rgba(51, 51, 51, 0.2);
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100px;
+    height: 50px;
+    margin: 50px;
+    cursor: pointer;
+    &:hover {
+        background: #b3e5fc;
+    } &:focus-within {
+        background: #b3e5fc;
+    }    
+}
+
+
+
+// VARIANT TEXT PROP
+//without color prop
+.variantText {
+    color: #2196f3;
+    background: #fff;
+    border: none;
+    box-shadow: none;
+    &:hover {
+        background: #b3e5fc;
+    } &:focus-within {
+        background: #b3e5fc;
+    }
+}
+
+// VARIANT OUTLINE PROP
+//without color prop
+.variantOutline {
+    color: #2196f3;
+    background: #fff;
+    border: 3px solid #2196f3;
+    &:hover {
+        background: #b3e5fc;
+    } &:focus-within {
+        background: #b3e5fc;
+    }
+}
+
+
+
+// COLOR PROP
+.color {
+    @each $status, $color in $status-colors {
+        //only color
+        &#{$status} {
+            @if $status=="Default" {
+                color: black;
+                background: $color;
+            } @else {
+            background: $color;
+            }
+        }
+
+        //with variant outline
+        &#{$status}.variantOutline {
+            @if $status=="Default" {
+                color: #283135;
+                background: #fff;
+                border: 3px solid $color;
+            } @else {
+                background: #fff;
+                border: 2px solid $color;
+                color: $color;
+            }            
+        }
+
+        // with variant text
+        &#{$status}.variantText {
+            @if $status=="Default" {
+                color: #283135;
+                background: #fff;
+                border: none;
+            } @else {
+                background: #fff;
+                border: none;
+                color: $color;
+                box-shadow: none;
+            }            
+        }
+
+    }
+    @each $status, $bgcolor in $status-bghover-colors {
+        // only color
+        &#{$status}:hover {
+            background: $bgcolor;
+        }&#{$status}:focus-within {
+            background: $bgcolor;
+        }
+
+        //with variant outline
+        &#{$status}.variantOutline:hover {
+            background: $bgcolor;
+        }&#{$status}.variantOutline:focus-within {
+            background: $bgcolor;
+        }
+
+        //with variant text
+        &#{$status}.variantText:hover {
+            background: $bgcolor;
+        }&#{$status}.variantText:focus-within {
+            background: $bgcolor;
+        }
+    }
+}
+
+
+
+// DISABLE SHADOW PROP 
+.disableShadowTrue {
+    box-shadow: none;
+}
+
+
+// DISABLED PROP
+.disabledTrue {
+    opacity: 0.8;
+    pointer-events: none;    
+}
+
+
+// SIZE PROP
+.sizeSm {
+    height: 40px;
+    font-size: 15px;
+}
+
+.sizeLg {
+    height: 55px;
+    font-size: 17px;
+}
+
+
